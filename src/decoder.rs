@@ -39,7 +39,7 @@ impl fmt::Display for BmpError {
             BmpIoError(ref error) => error.fmt(fmt),
             ref e => {
                 let kind_desc: &str = e.as_ref();
-                write!(fmt, "{}: {}", kind_desc, self.description())
+                write!(fmt, "{}: {}", kind_desc, self)
             }
         }
     }
@@ -51,14 +51,7 @@ impl From<io::Error> for BmpError {
     }
 }
 
-impl Error for BmpError {
-    fn description(&self) -> &str {
-        match self.kind {
-            BmpIoError(ref e) => e.description(),
-            _ => &self.details,
-        }
-    }
-}
+impl Error for BmpError {}
 
 /// The different kinds of possible BMP errors.
 #[derive(Debug)]
@@ -299,7 +292,7 @@ struct BitIndex<'a> {
     index: usize,
 }
 
-fn bit_index<'a>(bytes: &'a [u8], nbits: usize, size: usize) -> BitIndex {
+fn bit_index<'a>(bytes: &'a [u8], nbits: usize, size: usize) -> BitIndex<'a> {
     let bits_left = BITS - nbits;
     BitIndex {
         size,
