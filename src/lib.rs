@@ -665,6 +665,44 @@ mod tests {
         assert_eq!(coords.next(), Some((1, 2)));
     }
 
+    #[test]
+    fn coordinates_in_bounds() {
+        // This is to test for false positives in oout of bounds checks
+        let img = Image::new(20, 30);
+        for (x, y) in img.coordinates() {
+            img.check_index_validity(x, y);
+        }
+    }
+
+    #[test]
+    #[should_panic]
+    fn out_of_bounds_1() {
+        let img = Image::new(20, 30);
+        img.get_pixel(20, 0);
+    }
+
+    #[test]
+    #[should_panic]
+    fn out_of_bounds_2() {
+        let img = Image::new(20, 30);
+        img.get_pixel(0, 30);
+    }
+
+    #[test]
+    #[should_panic]
+    fn out_of_bounds_3() {
+        let img = Image::new(20, 30);
+        img.get_pixel(20, 30);
+    }
+
+    #[test]
+    #[should_panic]
+    fn out_of_bounds_4() {
+        let img = Image::new(20, 30);
+        img.get_pixel(100, 100);
+    }
+
+
     // TODO: Add benches when they are considered stable
     // #[bench]
     // fn write_bmp(b: &mut test::Bencher) {
