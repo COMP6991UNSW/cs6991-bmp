@@ -282,6 +282,35 @@ impl Image {
         self.height
     }
 
+    /// Checks that the provided coordinate `(x, y)` is within bounds for the image.
+    ///
+    /// # Panics
+    /// 
+    /// - This function will panic when the index is out of bounds, providing a descriptive error
+    /// message.
+    fn check_index_validity(&self, x: u32, y: u32) {
+        match (x >= self.width, y >= self.height) {
+            (true, true) =>
+                panic!(concat!(
+                    "index out of bounds: the width and height are {} and {} respectively,",
+                    " but the coordinate is ({}, {})"),
+                    self.width, self.height,
+                    x, y,
+                ),
+            (true, false) =>
+                panic!(
+                    "index out of bounds: the width is {} but the x coordinate is {}",
+                    self.width, x,
+                ),
+            (false, true) =>
+                panic!(
+                    "index out of bounds: the height is {} but the y coordinate is {}",
+                    self.height, y,
+                ),
+            _ =>(),
+        }
+    }
+
     /// Set the pixel value at the position of `width` and `height`.
     ///
     /// # Example
@@ -292,6 +321,7 @@ impl Image {
     /// ```
     #[inline]
     pub fn set_pixel(&mut self, x: u32, y: u32, val: Pixel) {
+        self.check_index_validity(x, y);
         self.data[((self.height - y - 1) * self.width + x) as usize] = val;
     }
 
@@ -305,6 +335,7 @@ impl Image {
     /// ```
     #[inline]
     pub fn get_pixel(&self, x: u32, y: u32) -> Pixel {
+        self.check_index_validity(x, y);
         self.data[((self.height - y - 1) * self.width + x) as usize]
     }
 
