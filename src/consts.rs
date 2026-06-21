@@ -1,4 +1,4 @@
-use Pixel;
+use crate::Pixel;
 
 pub const ALICE_BLUE: Pixel = Pixel {
     r: 240,

@@ -1,13 +1,14 @@
 [package]
 
-name = "bmp"
-version = "0.5.0"
-authors = ["Sondre Lefsaker"]
+name = "cs6991-bmp"
+version = "0.1.0"
+authors = ["COMP6991 UNSW"]
+edition = "2024"
 
 description = "Small library for reading and writing BMP images in Rust."
-documentation = "https://docs.rs/bmp"
-repository = "https://github.com/sondrele/rust-bmp.git"
-homepage = "https://github.com/sondrele/rust-bmp"
+# documentation = "https://docs.rs/cs6991-bmp"
+repository = "https://github.com/COMP6991UNSW/cs6991-bmp.git"
+homepage = "https://github.com/COMP6991UNSW/cs6991-bmp"
 
 license = "MIT"
 readme = "README.md"

@@ -3,7 +3,7 @@ use byteorder::{LittleEndian, WriteBytesExt};
 
 use std::io::{self, Write};
 
-use Image;
+use crate::Image;
 
 const B: u8 = 66;
 const M: u8 = 77;

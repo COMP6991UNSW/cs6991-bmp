@@ -16,9 +16,7 @@
 //! # Example
 //!
 //! ```
-//! #[macro_use]
-//! extern crate bmp;
-//! use bmp::{Image, Pixel};
+//! use cs6991_bmp::{px, Image, Pixel};
 //!
 //! fn main() {
 //!     let mut img = Image::new(256, 256);
@@ -250,7 +248,7 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// let mut img = bmp::Image::new(100, 80);
+    /// let mut img = cs6991_bmp::Image::new(100, 80);
     /// ```
     pub fn new(width: u32, height: u32) -> Image {
         let mut data = Vec::with_capacity((width * height) as usize);
@@ -316,8 +314,8 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// let mut img = bmp::Image::new(100, 80);
-    /// img.set_pixel(10, 10, bmp::consts::RED);
+    /// let mut img = cs6991_bmp::Image::new(100, 80);
+    /// img.set_pixel(10, 10, cs6991_bmp::consts::RED);
     /// ```
     #[inline]
     pub fn set_pixel(&mut self, x: u32, y: u32, val: Pixel) {
@@ -330,8 +328,8 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// let img = bmp::Image::new(100, 80);
-    /// assert_eq!(bmp::consts::BLACK, img.get_pixel(10, 10));
+    /// let img = cs6991_bmp::Image::new(100, 80);
+    /// assert_eq!(cs6991_bmp::consts::BLACK, img.get_pixel(10, 10));
     /// ```
     #[inline]
     pub fn get_pixel(&self, x: u32, y: u32) -> Pixel {
@@ -344,9 +342,9 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// let mut img = bmp::Image::new(100, 100);
+    /// let mut img = cs6991_bmp::Image::new(100, 100);
     /// for (x, y) in img.coordinates() {
-    ///     img.set_pixel(x, y, bmp::consts::BLUE);
+    ///     img.set_pixel(x, y, cs6991_bmp::consts::BLUE);
     /// }
     /// ```
     #[inline]
@@ -362,7 +360,7 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// use bmp::Image;
+    /// use cs6991_bmp::Image;
     ///
     /// let mut img = Image::new(100, 100);
     /// let _ = img.save("black.bmp").unwrap_or_else(|e| {
@@ -443,7 +441,7 @@ impl Iterator for ImageIndex {
 /// # Example
 ///
 /// ```
-/// let img = bmp::open("test/rgbw.bmp").unwrap_or_else(|e| {
+/// let img = cs6991_bmp::open("test/rgbw.bmp").unwrap_or_else(|e| {
 ///    panic!("Failed to open: {}", e);
 /// });
 /// ```

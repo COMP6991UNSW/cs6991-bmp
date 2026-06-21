@@ -1,6 +1,4 @@
-#[macro_use]
-extern crate bmp;
-use bmp::{Image, Pixel};
+use cs6991_bmp::{px, Image, Pixel};
 
 fn main() {
     let mut img = Image::new(256, 256);

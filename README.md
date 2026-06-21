@@ -1,26 +1,24 @@
-rust-bmp
+cs6991-bmp
 ========
-[![Build Status](https://travis-ci.org/sondrele/rust-bmp.svg?branch=master)](https://travis-ci.org/sondrele/rust-bmp)
 
-[Full documentation](https://docs.rs/bmp/)
+[Full documentation](https://docs.rs/cs6991-bmp/)
 
 Small module for reading and writing bitmap images.
 See the documentation for the current status of BMP encoding and decoding support.
 
 Usage
 -----
-An updated version of the library should be available on [crates.io](https://crates.io/crates/bmp).
+An updated version of the library should be available on [crates.io](https://crates.io/crates/cs6991-bmp).
 Add the following to your `Cargo.toml` to get is a dependency.
 
 ```toml
 [dependencies]
-bmp = "*"
+cs6991-bmp = "*"
 ```
 ### Initializing
 Initialize a new image with the `new` function, by specifying `width` and `height`.
 ```rust
-extern crate bmp;
-use bmp::Image;
+use cs6991_bmp::Image;
 
 let mut img = Image::new(100, 100);
 ```
@@ -37,9 +35,7 @@ let _ = img.save("path/to/img.bmp");
 Open an existing image with the `open` function, by specifying the `path`. The function
 returns a `BmpResult`, that contains either a `Image` or a `BmpError`.
 ```rust
-extern crate bmp;
-
-let img = bmp::open("path/to/img.bmp").unwrap_or_else(|e| {
+let img = cs6991_bmp::open("path/to/img.bmp").unwrap_or_else(|e| {
     panic!("Failed to open: {}", e);
 });
 ```
@@ -50,9 +46,7 @@ upper left corner of the image.
 Example:
 
 ```rust
-#[macro_use]
-extern crate bmp;
-use bmp::{Image, Pixel};
+use cs6991_bmp::{px, Image, Pixel};
 
 fn main() {
     let mut img = Image::new(256, 256);
