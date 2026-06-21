@@ -1,6 +1,8 @@
 cs6991-bmp
 ========
 
+This is a fork of [rust-bmp](https://github.com/sondrele/rust-bmp), maintained for use with [COMP6991](https://cgi.cse.unsw.edu.au/~cs6991/current/) at the University of New South Wales.
+
 [Full documentation](https://docs.rs/cs6991-bmp/)
 
 Small module for reading and writing bitmap images.
